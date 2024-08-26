@@ -1,16 +1,14 @@
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
-export default function TabOneScreen() {
+export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-
-      <Text style={styles.title}>Home</Text>
-      <Text style={{ fontSize: 16, padding: 10 }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem autem ducimus at neque pariatur, unde ab? Totam tenetur ipsum assumenda repellat quidem quisquam impedit aspernatur quia quasi nisi. Rem, incidunt!</Text>
+      <Text style={styles.title}>Tab Three</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <EditScreenInfo path="app/(tabs)/two.tsx" />
     </View>
   );
 }

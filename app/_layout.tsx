@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -42,6 +43,7 @@ export default function RootLayout() {
     return null;
   }
 
+  // return <Image source={require('../assets/images/edr-header.png')} height={100} width={200} />;
   return <RootLayoutNav />;
 }
 
@@ -49,11 +51,34 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <ImageBackground
+      source={require('../assets/images/edr-header.png')} // Path to your background image
+      style={styles.background}
+      height={100}
+      width={400}
+    >
+      <View style={styles.inner}>
+        <ThemeProvider
+          // value={colorScheme:"t"}
+          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+        >
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal', title: "Mango Modal" }} />
+          </Stack>
+        </ThemeProvider>
+      </View>
+    </ImageBackground>
   );
 }
+
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1, // Make sure the background image covers the whole screen
+    resizeMode: 'cover', // Scale the image appropriately
+  },
+  inner: {
+    flex: 1, // Ensure content is rendered within the background image
+  },
+});
